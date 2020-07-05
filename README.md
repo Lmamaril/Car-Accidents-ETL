@@ -12,10 +12,8 @@ Car-Accidents-ETL
 | README.md
 | 
 └─── data
-|
-└─── processing
-| | etl.ipynb # preliminary code to set up ETL
-|
-└─── database
-| | sql_queries.py
+| etl.ipynb # preliminary code to set up ETL
+| etl.py # loads accidents, holidays, time, and demographics data
+| create_tables.py # creates the accidentAnalysis database tables
+| sql_queries.py # contains drop, insert, create statements
 ```
