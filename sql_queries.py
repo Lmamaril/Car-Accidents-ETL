@@ -61,29 +61,29 @@ create_accidents_table = ("""
         astronomical_twilight VARCHAR);
     """) 
 
+create_time_table = ("""
+    CREATE TABLE IF NOT EXISTS time (
+        ev_time TIMESTAMP PRIMARY KEY,
+        ev_date DATE,
+        ev_hour INT,
+        ev_day INT,
+        ev_month INT,
+        ev_year INT,
+        ev_day_of_week VARCHAR);
+    """)
+
 create_holidays_table = ("""
     CREATE TABLE IF NOT EXISTS holidays (
         holiday_id INT PRIMARY KEY,
         name VARCHAR,
-        date DATE);
+        ev_date DATE);
     """) 
-
-create_time_table = ("""
-    CREATE TABLE IF NOT EXISTS time (
-        time TIMESTAMP PRIMARY KEY,
-        date DATE,
-        hour INT,
-        day INT,
-        month INT,
-        year INT,
-        day_of_week VARCHAR);
-    """)
 
 create_road_rank_table = ("""
     CREATE TABLE IF NOT EXISTS roadRankings (
         road_rank_id SERIAL PRIMARY KEY,
         overall_rank INT,
-        year INT,
+        rank_year INT,
         state VARCHAR,
         commute_rank INT,
         transit_rank INT,
@@ -95,11 +95,11 @@ create_demographics_table = ("""
     CREATE TABLE IF NOT EXISTS demographics (
         demographics_id INT PRIMARY KEY,
         state VARCHAR,
-        year INT,
+        dem_year INT,
         household_income INT);
     """)
 
-create_table_queries = [create_accidents_table, create_holidays_table,create_time_table,create_road_rank_table, create_demographics_table]
+create_table_queries = [create_accidents_table, create_time_table, create_holidays_table,create_road_rank_table, create_demographics_table]
 
 # INSERT VALUES STATEMENTS
 
@@ -144,22 +144,24 @@ insert_accidents = ("""
        """)
 
 insert_holidays = ("""
-    INSERT INTO holidays (holiday_id, name, date) 
+    INSERT INTO holidays (holiday_id, name, ev_date) 
     VALUES (%s,%s,%s);
     """) 
 
 insert_time = ("""
-    INSERT INTO time (time, date, hour, day, month, year, day_of_week) 
-    VALUES (%s, %s, %s, %s, %s, %s, %s);
+    INSERT INTO time (ev_time, ev_date, ev_hour, ev_day, ev_month, ev_year, ev_day_of_week) 
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (ev_time) 
+    DO NOTHING;
     """)
 
 insert_road_rank = ("""
-    INSERT INTO roadRankings (overall_rank, year, state, commute_rank, transit_rank, road_quality_rank, bridge_quality_rank)
+    INSERT INTO roadRankings (overall_rank, rank_year, state, commute_rank, transit_rank, road_quality_rank, bridge_quality_rank)
     VALUES (%s, %s, %s, %s, %s, %s, %s);
     """)
 
 insert_demographics = ("""
-    INSERT INTO demographics (demographics_id, state, year,household_income);
+    INSERT INTO demographics (demographics_id, state, dem_year,household_income);
     VALUES(%s, %s, %s, %s);
     """)
 
