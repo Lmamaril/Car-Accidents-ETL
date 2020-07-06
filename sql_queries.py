@@ -13,14 +13,43 @@
 
 accidents_drop = "DROP TABLE IF EXISTS accidents;" 
 road_rank_drop = "DROP TABLE IF EXISTS roadRankings;"
-demographics_drop = "DROP TABLE IF EXISTS demographics;"
 holidays_drop = "DROP TABLE IF EXISTS holidays;"
 time_drop = "DROP TABLE IF EXISTS time;"
 accidents_analysis_drop = "DROP TABLE IF EXISTS accidentsAnalysis;"
 
-drop_table_queries = [accidents_drop, road_rank_drop, demographics_drop, holidays_drop, time_drop, accidents_analysis_drop]
+drop_table_queries = [accidents_drop, road_rank_drop, holidays_drop, time_drop, accidents_analysis_drop]
 
 # CREATE TABLE STATEMENTS
+
+create_time_table = ("""
+    CREATE TABLE IF NOT EXISTS time (
+        ev_time TIMESTAMP PRIMARY KEY,
+        ev_date DATE,
+        ev_hour INT,
+        ev_day INT,
+        ev_month INT,
+        ev_year INT,
+        ev_day_of_week VARCHAR);
+    """)
+
+create_holidays_table = ("""
+    CREATE TABLE IF NOT EXISTS holidays (
+        holiday_id INT PRIMARY KEY,
+        name VARCHAR,
+        ev_date DATE);
+    """) 
+
+create_road_rank_table = ("""
+    CREATE TABLE IF NOT EXISTS roadRankings (
+        road_rank_id SERIAL PRIMARY KEY,
+        overall_rank INT,
+        rank_year INT,
+        state VARCHAR,
+        commute_rank INT,
+        transit_rank INT,
+        road_quality_rank INT,
+        bridge_quality_rank INT);
+    """)
 
 create_accidents_table = ("""
     CREATE TABLE IF NOT EXISTS accidents (
@@ -61,45 +90,17 @@ create_accidents_table = ("""
         astronomical_twilight VARCHAR);
     """) 
 
-create_time_table = ("""
-    CREATE TABLE IF NOT EXISTS time (
-        ev_time TIMESTAMP PRIMARY KEY,
-        ev_date DATE,
-        ev_hour INT,
-        ev_day INT,
-        ev_month INT,
-        ev_year INT,
-        ev_day_of_week VARCHAR);
+create_analysis_table = ("""
+    CREATE TABLE IF NOT EXISTS accidentsAnalysis(
+        analysis_id SERIAL PRIMARY KEY,
+        accident_id VARCHAR,
+        "time" TIMESTAMP,
+        state VARCHAR, 
+        holiday_id INT,
+        road_rank_id INT);
     """)
 
-create_holidays_table = ("""
-    CREATE TABLE IF NOT EXISTS holidays (
-        holiday_id INT PRIMARY KEY,
-        name VARCHAR,
-        ev_date DATE);
-    """) 
-
-create_road_rank_table = ("""
-    CREATE TABLE IF NOT EXISTS roadRankings (
-        road_rank_id SERIAL PRIMARY KEY,
-        overall_rank INT,
-        rank_year INT,
-        state VARCHAR,
-        commute_rank INT,
-        transit_rank INT,
-        road_quality_rank INT,
-        bridge_quality_rank INT);
-    """)
-
-create_demographics_table = ("""
-    CREATE TABLE IF NOT EXISTS demographics (
-        demographics_id INT PRIMARY KEY,
-        state VARCHAR,
-        dem_year INT,
-        household_income INT);
-    """)
-
-create_table_queries = [create_accidents_table, create_time_table, create_holidays_table,create_road_rank_table, create_demographics_table]
+create_table_queries = [create_accidents_table, create_time_table, create_holidays_table,create_road_rank_table, create_analysis_table]
 
 # INSERT VALUES STATEMENTS
 
@@ -160,9 +161,19 @@ insert_road_rank = ("""
     VALUES (%s, %s, %s, %s, %s, %s, %s);
     """)
 
-insert_demographics = ("""
-    INSERT INTO demographics (demographics_id, state, dem_year,household_income);
-    VALUES(%s, %s, %s, %s);
+insert_analysis = ("""
+    INSERT INTO accidentsAnalysis(accident_id, "time", state,holiday_id, road_rank_id) VALUES (%s, %s, %s, %s, %s); 
     """)
 
-insert_value_queries = [insert_accidents, insert_holidays, insert_time, insert_road_rank, insert_demographics]
+insert_value_queries = [insert_accidents, insert_holidays, insert_time, insert_road_rank, insert_analysis]
+
+# SELECT STATEMENTS
+
+select_holiday = ("""
+    SELECT holiday_id FROM holidays
+    WHERE ev_date = %s;
+    """)
+select_rank = ("""
+    SELECT road_rank_id FROM roadRankings
+    WHERE rank_year = %s and state = %s;
+    """)
