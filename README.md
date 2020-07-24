@@ -12,9 +12,12 @@ Designed a data model based on a star schema design:
 Car-Accidents-ETL
 | README.md
 | 
-└─── data
-| etl.ipynb # preliminary code to set up ETL
-| etl.py # loads accidents, holidays, time, and demographics data
-| create_tables.py # creates the accidentAnalysis database tables
-| sql_queries.py # contains drop, insert, create statements
+└─── data 
+| | state_road_rankings.csv
+| | usholidays.csv
+└─── etl
+| | etl.ipynb # preliminary code to set up ETL
+| | etl.py # loads accidents, holidays, time, and demographics data
+| | create_tables.py # creates the accidentAnalysis database tables
+| | sql_queries.py # contains drop, insert, create statements
 ```
