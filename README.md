@@ -1,10 +1,9 @@
-# Car Accidents ETL :blue_car:
+# US Car Accidents :blue_car:
 
 ETL that extracts data from various sources to load car accident into a 
-PostgreSQL database.  
+PostgreSQL database using a **star schema** design.  
 Packages used include pandas and psycopg2.
 
-Designed a data model based on a star schema design:  
 ![uml](uml.png)
 
 ### Project Structure
