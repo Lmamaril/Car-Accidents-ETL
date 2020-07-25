@@ -1,6 +1,10 @@
 # configuration file
 config.py
+
+# cache/checkpoints
 .ipynb_checkpoints/
 __pycache__/
-db_modules/db_connection.py
+
+# large data files
+data/us_accidents.csv
 
