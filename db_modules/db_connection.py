@@ -1,5 +1,6 @@
 import psycopg2
 import config
+
 """
     This module is the accesspoint for db connection 
     throughout the project
@@ -20,7 +21,4 @@ def connect_database():
     cur = conn.cursor()
     
     return conn, cur
-
-def test_access():
-    return "access granted"
 
