@@ -8,15 +8,20 @@ Packages used include pandas and psycopg2.
 
 ### Project Structure
 ```
-Car-Accidents-ETL
+US-Car-Accident-ETL-Analysis
 | README.md
+| uml.png
 | 
-└─── data 
-| | state_road_rankings.csv
-| | usholidays.csv
-└─── etl
-| | etl.ipynb # preliminary code to set up ETL
-| | etl.py # loads accidents, holidays, time, and demographics data
-| | create_tables.py # creates the accidentAnalysis database tables
-| | sql_queries.py # contains drop, insert, create statements
+└─── data # state ranking and usholidays data only. car accident data found [here](https://www.kaggle.com/sobhanmoosavi/us-accidents)
+|  | └─── state_road_rankings.csv
+|  | └─── usholidays.csv
+|
+└─── db_modules
+|  | └─── db_connections.py
+|  | └─── sql_queries.py # contains drop, insert, create statements
+|
+| etl_helper.ipynb # preliminary code to set up ETL
+| etl_processor.py # loads accidents, holidays, time, and demographics data
+| | create_database.py # creates the accidentAnalysis database tables
+
 ```
