@@ -4,6 +4,7 @@ config.py
 # cache/checkpoints
 .ipynb_checkpoints/
 __pycache__/
+db_modules/__pycache__/
 
 # large data files
 data/us_accidents.csv
