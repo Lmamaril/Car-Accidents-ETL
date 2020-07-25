@@ -1,6 +1,5 @@
 import psycopg2
 import config
-
 """
     This module is the accesspoint for db connection 
     throughout the project
@@ -16,7 +15,7 @@ def connect_database():
     """
     conn =  psycopg2.connect(
         "host={} dbname=postgres user={} password={}"
-        .format(hostname, username, pw))
+        .format(config.hostname, config.username, config.pw))
     conn.set_session(autocommit=True)
     cur = conn.cursor()
     
