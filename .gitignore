@@ -2,3 +2,5 @@
 config.py
 .ipynb_checkpoints/
 __pycache__/
+db_modules/db_connection.py
+
