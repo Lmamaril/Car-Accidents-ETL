@@ -8,6 +8,7 @@ Packages used include pandas and psycopg2.
 
 ### Project Structure
 ```
+<pre>
 US-Car-Accident-ETL-Analysis
 | README.md
 | uml.png
@@ -26,5 +27,6 @@ US-Car-Accident-ETL-Analysis
 | etl_helper.ipynb # preliminary code to set up ETL
 | etl_processor.py # loads accidents, holidays, time, and demographics data
 
+</pre>
 ```
 ![visualization](tableau_dashboard.png)
