@@ -11,8 +11,10 @@ Packages used include pandas and psycopg2.
 US-Car-Accident-ETL-Analysis
 | README.md
 | uml.png
+| tableau_dashboard.png
 | 
-└─── data # state ranking and usholidays data only. car accident data found [here](https://www.kaggle.com/sobhanmoosavi/us-accidents)
+└─── data # state ranking and usholidays data only  
+          # car accident data found [here](https://www.kaggle.com/sobhanmoosavi/us-accidents)
 |  | └─── state_road_rankings.csv
 |  | └─── usholidays.csv
 |
@@ -20,8 +22,9 @@ US-Car-Accident-ETL-Analysis
 |  | └─── db_connections.py
 |  | └─── sql_queries.py # contains drop, insert, create statements
 |
+| create_database.py # creates the accidentAnalysis database tables
 | etl_helper.ipynb # preliminary code to set up ETL
 | etl_processor.py # loads accidents, holidays, time, and demographics data
-| | create_database.py # creates the accidentAnalysis database tables
 
 ```
+![visualization](tableau_dashboard.png)
