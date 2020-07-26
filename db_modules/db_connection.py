@@ -5,10 +5,6 @@ import psycopg2
     throughout the project.
 """
 
-hostname = "127.0.0.1"
-username = "user"
-pw = "password"
-
 def connect_database():
     """ connect to the database
     args:
@@ -17,9 +13,7 @@ def connect_database():
         :: conn :: psycopg2 connect object
         :: cur :: psycopg2 cursor
     """
-    conn =  psycopg2.connect(
-        "host={} dbname=postgres user={} password={}"
-        .format(hostname, username, pw))
+    conn =  psycopg2.connect("host=127.0.0.1 dbname=postgres user=user password=password")
     conn.set_session(autocommit=True)
     cur = conn.cursor()
     

@@ -54,7 +54,7 @@ create_road_rank_table = ("""
 create_accidents_table = ("""
     CREATE TABLE IF NOT EXISTS accidents (
         accident_id VARCHAR PRIMARY KEY,
-        severity VARCHAR,
+        severity INT,
         start_time TIMESTAMP,
         end_time TIMESTAMP,
         start_lat FLOAT,
