@@ -13,6 +13,7 @@ US-Car-Accident-ETL-Analysis
 | README.md
 | uml.png
 | tableau_dashboard.png
+| notebook_viz.png
 | 
 └─── data # state ranking and usholidays data only  
           # car accident data found <a href="https://www.kaggle.com/sobhanmoosavi/us-accidents" title="us-car-accidents">here</a>
@@ -29,4 +30,5 @@ US-Car-Accident-ETL-Analysis
 
 </pre>
 
-![visualization](tableau_dashboard.png)
+![tableau visualization](tableau_dashboard.png)
+![notebook visualization](notebook_viz.png)
