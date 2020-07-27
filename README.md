@@ -2,7 +2,13 @@
 
 ETL that extracts data from various sources to load car accident into a 
 PostgreSQL database using a **star schema** design.  
-Packages used include pandas and psycopg2.
+Packages used include:
+
+* pandas
+* psycopg2
+* seaborn
+* plotly
+* matplotlib
 
 ![uml](uml.png)
 
@@ -30,5 +36,7 @@ US-Car-Accident-ETL-Analysis
 
 </pre>
 
+# Visualizations from Tableau
 ![tableau visualization](tableau_dashboard.png)
+# Visualizations from Jupyter Notebook
 ![notebook visualization](notebook_viz.png)
