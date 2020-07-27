@@ -10,9 +10,10 @@ Packages used include:
 * plotly
 * matplotlib
 
+## Data Model
 ![uml](uml.png)
 
-### Project Structure
+## Project Structure
 
 <pre>
 US-Car-Accident-ETL-Analysis
@@ -36,7 +37,7 @@ US-Car-Accident-ETL-Analysis
 
 </pre>
 
-# Visualizations from Tableau
+## Visualizations from Tableau
 ![tableau visualization](tableau_dashboard.png)
-# Visualizations from Jupyter Notebook
+## Visualizations from Jupyter Notebook
 ![notebook visualization](notebook_viz.png)
